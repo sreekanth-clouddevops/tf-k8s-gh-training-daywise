@@ -1,0 +1,14 @@
+#Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+crash.log
+
+# Local override files / secrets
+*.tfvars
+.env
+sp.json
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
