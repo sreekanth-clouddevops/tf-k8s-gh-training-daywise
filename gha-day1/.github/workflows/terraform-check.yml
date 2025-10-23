@@ -1,0 +1,21 @@
+name: Terraform Checks
+on:
+  pull_request:
+    paths:
+    - '**/*.tf'
+
+jobs:
+  fmt-validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.0
+      - name: Terraform fmt
+        run: terraform fmt -check -recursive
+      - name: Terraform init
+        run: terraform init -backend=false
+      - name: Terraform validate
+        run: terraform validate
